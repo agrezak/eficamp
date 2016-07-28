@@ -1,2 +1,4 @@
 # eficamp
 Efi camp
+
+// INIT
