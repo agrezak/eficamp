@@ -7,35 +7,66 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../css/app.css">
+  <link rel="stylesheet" href="../scss/main.css">
 </head>
 <body>
 
-  <section>
+  <section class="login-screen">
+
     <div class="row">
-      <div class="small-6 column">
-        <div class="box">
-          <div class="row">
-            <div class="small-12">
-              <div class="row">
-                <div class="small-12">
-                  <h2>Login</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut quod molestias, ab fugit hic ex fuga sed repellendus itaque fugiat dolorum cum temporibus cupiditate possimus! Amet enim blanditiis eos et.</p>
-                </div>
-                </div>
-                <div class="small-12">
-                  <form action="">
-                    <input type="text">
-                    <input type="text">
-                  </form>
-                </div>
-                <div class="small-12"></div>
-              </div>
+      <div class="small-3">
+        <div class="brand-logo">
+          <a href="#"><span>efi<sup>3</sup></span></a/>
           </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <script src=""></script>
-</body>
-</html>
+      <div class="row login-row">
+        <div class="small-10 medium-6 small-centered column box login">
+          <div class="row">
+            <div class="small-10 small-centered text-center">
+              <h1>Login</h1>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-10 small-centered">
+              <form action="">
+                <div class="row">
+                  <div class="small-6 small-centered circle-photo">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="small-10 small-centered">
+                    <p class="text-center">efi bank</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="small-10 columns">
+                    <input id="login" type="text" placeholder="Login">
+                    <label for="login"></label>
+                  </div>
+                  <div class="small-2 columns">
+                    <img src="../img/keyboard.png" alt="Użyj klawiatury do logowania">
+                  </div>
+                </div>
+                <div class="row align-middle">
+                    <div class="small-6 small-centered text-center column">
+                      <input id="password" type="text" placeholder="Hasło">
+                      <labe for="password" id="password"></label>
+                      <button class="button" id="submit" type="submit">Wyślij</button>
+                    </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    </footer>
+
+  <script src="../dist/assets/js/app.js"></script>
+  <script src="../js/app.js"></script>
+  </body>
+  </html>

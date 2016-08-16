@@ -1,0 +1,82 @@
+// main: ../../main.scss
+
+@import "../../variables/colors.scss";
+@import "../../variables/sizes.scss";
+
+body {
+  color : $white;
+  background: url("../img/bg-login.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+// To replace with image - logo should be image, in most cases
+.brand-logo {
+  position: absolute;
+  top: 10%;
+  border: solid 3px gray;
+  border-radius: 5px;
+  font-weight: bold;
+  a {
+    color: $white;
+    text-decoration: none;
+  }
+  span {
+    font-size: 4rem;
+    padding: 0 15px;
+    line-height: 2;
+  }
+}
+
+.login-screen {
+
+  .login-row {
+    margin-top: 5%;
+  }
+
+  .login {
+    background: $brand;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    padding-bottom: 7.5rem;
+  }
+
+  h1 ~ p {
+    padding-bottom: 10%;
+  }
+
+  .circle-photo {
+    background: url('../img/profile-circle.png') no-repeat center;
+    background-size: 100%;
+    position: relative;
+    margin-top: -70px;
+    margin-bottom: 30px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 5px solid $white;
+  }
+
+  .custom-keyboard {
+
+  }
+
+  form {
+    background: $loginPage;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    padding: 5%;
+
+  }
+}
+
+.error {
+  width: 50px;
+  height: 50px;
+  background: red;
+}
+
+.success {
+  width: 50px;
+  height: 50px;
+  background: green;
+}
