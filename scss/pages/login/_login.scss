@@ -69,6 +69,14 @@ body {
   }
 }
 
+.close-keyboard {
+    border: 1px solid $black;
+    width: 35px;
+    height: 35px;
+    border-radius: 15px;
+    background: $black;
+}
+
 .error {
   width: 50px;
   height: 50px;

@@ -1,4 +1,3 @@
-$(document).ready(function() {
 
   var LOGIN = LOGIN || {};
 
@@ -8,12 +7,11 @@ $(document).ready(function() {
       submit : $('#submit'),
       login : $('#login'),
       password : $('#password'),
+      message: $('.message-container')
     },
 
     init: function() {
-
       this.bindEvents();
-
     },
 
     bindEvents: function() {
@@ -33,20 +31,20 @@ $(document).ready(function() {
       }
 
       if(user.login.length < 1 || user.password.length < 1) {
-        console.log('dupa!')
+        this.loginEmpty();
       } else {
-        this.ajaxReq(user.login,user.password);
+        this.ajaxReq(user);
       }
 
     },
 
-    ajaxReq: function(login, password) {
+    ajaxReq: function(user) {
 
       $.ajax({
         type: "post",
         data: {
-          login: login,
-          password: password
+          login: user.login,
+          password: user.password
         },
         url: "https://efigence-camp.herokuapp.com/api/login",
 
@@ -67,6 +65,14 @@ $(document).ready(function() {
 
     },
 
+    loginEmpty: function() {
+
+        let empty = "<small class='info'>Wpisz swój login i hasło!</small>"
+
+        this._o.message.append(empty);
+
+    },
+
     loginSuccess: function() {
 
 
@@ -77,14 +83,57 @@ $(document).ready(function() {
 
       let error = "<small class='error'>"+message+"</small>";
 
-      $('#submit').append(error);
+      this._o.message.append(error);
 
     }
 
-  }
+};
 
+var KEYBOARD = KEYBOARD || {};
+
+KEYBOARD = {
+
+    _o: {
+        login: $('#login'),
+        password: $('#password'),
+        keyboardLogin: $('#keyboard-login'),
+        keyboardPassword: $('#keyboard-password'),
+        destroyLogin: $('#destroy-login'),
+        destroyPassword: $('#destroy-password')
+    },
+
+    init: function() {
+        this.bindEvents();
+    },
+
+    bindEvents: function() {
+
+        this._o.keyboardLogin.on('click', () => {
+            this._o.login.keyboard();
+        });
+
+        this._o.keyboardPassword.on('click', () => {
+            this._o.password.keyboard();
+        });
+
+        this._o.destroyLogin.on('click', () => {
+            let destroy = $('#login').keyboard().getkeyboard();
+            destroy.destroy();
+        });
+
+        this._o.destroyPassword.on('click', () => {
+            let destroy = $('#password').keyboard().getkeyboard();
+            destroy.destroy();
+        });
+
+    },
+
+}
+
+
+  $(document).ready(function() {
 
   LOGIN.init();
+  KEYBOARD.init();
 
-
-});
+  });

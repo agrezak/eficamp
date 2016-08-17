@@ -1,72 +1,87 @@
 <!doctype html>
 <html class="no-js" lang="">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>efi3 bank</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../css/app.css">
-  <link rel="stylesheet" href="../scss/main.css">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>efi3 bank</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../bower_components/keyboard/dist/css/keyboard-dark.min.css">
+    <link rel="stylesheet" href="../css/app.css">
+    <link rel="stylesheet" href="../scss/main.css">
 </head>
 <body>
 
-  <section class="login-screen">
+    <section class="login-screen">
 
-    <div class="row">
-      <div class="small-3">
-        <div class="brand-logo">
-          <a href="#"><span>efi<sup>3</sup></span></a/>
-          </div>
-        </div>
-      </div>
-
-      <div class="row login-row">
-        <div class="small-10 medium-6 small-centered column box login">
-          <div class="row">
-            <div class="small-10 small-centered text-center">
-              <h1>Login</h1>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="small-10 small-centered">
-              <form action="">
-                <div class="row">
-                  <div class="small-6 small-centered circle-photo">
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="small-10 small-centered">
-                    <p class="text-center">efi bank</p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="small-10 columns">
-                    <input id="login" type="text" placeholder="Login">
-                    <label for="login"></label>
-                  </div>
-                  <div class="small-2 columns">
-                    <img src="../img/keyboard.png" alt="Użyj klawiatury do logowania">
-                  </div>
-                </div>
-                <div class="row align-middle">
-                    <div class="small-6 small-centered text-center column">
-                      <input id="password" type="text" placeholder="Hasło">
-                      <labe for="password" id="password"></label>
-                      <button class="button" id="submit" type="submit">Wyślij</button>
+        <div class="row">
+            <div class="small-3">
+                <div class="brand-logo">
+                    <a href="#"><span>efi<sup>3</sup></span></a/>
                     </div>
                 </div>
-              </form>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    </footer>
+            <div class="row login-row">
+                <div class="small-10 medium-6 small-centered column box login">
+                    <div class="row">
+                        <div class="small-10 small-centered text-center">
+                            <h1>Login</h1>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-10 small-centered">
+                            <form action="">
+                                <div class="row">
+                                    <div class="small-6 small-centered circle-photo">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="small-10 small-centered">
+                                        <p class="text-center">efi bank</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="small-10 columns">
+                                        <input id="login" type="text" placeholder="Login">
+                                        <label for="login"></label>
+                                    </div>
+                                    <div class="small-2 columns">
+                                        <img id="keyboard-login" src="../img/keyboard.png" alt="Użyj klawiatury do logowania">
+                                        <span class="close-keyboard" id="destroy-login">X</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="small-10 text-center column">
+                                        <input id="password" type="text" placeholder="Hasło">
+                                        <label for="password" id="password"></label>
+                                    </div>
+                                    <div class="small-2 text-center column">
+                                        <img id="keyboard-password" src="../img/keyboard.png" alt="Użyj klawiatury do logowania">
+                                        <span class="close-keyboard" id="destroy-password">X</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="small-12 small-center text-center column">
+                                        <button class="button" id="submit" type="submit">Wyślij</button>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="small-12 text-center column message-container"></div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <script src="../dist/assets/js/app.js"></script>
-  <script src="../js/app.js"></script>
-  </body>
-  </html>
+        <footer>
+        </footer>
+
+        <script src="../dist/assets/js/app.js"></script>
+        <script src="../bower_components/keyboard/dist/js/jquery.keyboard.js"></script>
+        <script src="../js/app.js"></script>
+    </body>
+    </html>
