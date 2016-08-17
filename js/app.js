@@ -1,67 +1,69 @@
 
-  var LOGIN = LOGIN || {};
+var LOGIN = LOGIN || {};
 
-  LOGIN = {
+LOGIN = {
 
     _o: {
-      submit : $('#submit'),
-      login : $('#login'),
-      password : $('#password'),
-      message: $('.message-container')
+        submit : $('#submit'),
+        login : $('#login'),
+        password : $('#password'),
+        message: $('.message-container')
     },
 
     init: function() {
-      this.bindEvents();
+        this.bindEvents();
     },
 
     bindEvents: function() {
 
-      this._o.submit.on('click touch', (event) => {
-        event.preventDefault();
-        this.checkLogin();
-      });
+        this._o.submit.on('click touch', (event) => {
+            event.preventDefault();
+            this.checkLogin();
+        });
 
     },
 
     checkLogin: function() {
 
-      let user = {
-        login: this._o.login.val(),
-        password: this._o.password.val()
-      }
+        let user = {
+            login: this._o.login.val(),
+            password: this._o.password.val()
+        }
 
-      if(user.login.length < 1 || user.password.length < 1) {
-        this.loginEmpty();
-      } else {
-        this.ajaxReq(user);
-      }
+        if(user.login.length < 1 || user.password.length < 1) {
+            this.loginEmpty();
+        } else {
+            this.ajaxReq(user);
+        }
 
     },
 
     ajaxReq: function(user) {
 
-      $.ajax({
-        type: "post",
-        data: {
-          login: user.login,
-          password: user.password
-        },
-        url: "https://efigence-camp.herokuapp.com/api/login",
+        $.ajax({
+            type: "post",
+            data: {
+                login: user.login,
+                password: user.password
+            },
+            url: "https://efigence-camp.herokuapp.com/api/login",
 
-        error: (response) => {
-          let jsonResponse = JSON.parse(response.responseText),
-          errorMessage = jsonResponse.message;
+            error: (response) => {
+                let jsonResponse = JSON.parse(response.responseText),
+                errorMessage = jsonResponse.message;
 
-          this.loginError(errorMessage);
-        },
+                this.loginError(errorMessage);
+            },
 
-        success: (response) => {
+            success: (response) => {
 
-          setTimeout( () => {
-            window.location.replace("http://google.com");
-          }, 5000);
-        }
-      });
+                this.loginSuccess();
+
+                setTimeout( () => {
+                    window.location.replace("http://google.com");
+                }, 5000);
+            }
+        });
 
     },
 
@@ -75,15 +77,29 @@
 
     loginSuccess: function() {
 
+        let timeLeft = "<span id='time-left'> 5 </span>";
+        let success = "<small class='success'>Za" + timeLeft + "sekund zostaniesz automatycznie przeniesiony do strony banku</small>";
 
+
+        let time = 5;
+        let countdown = setInterval( () => {
+            let timer = $('#time-left');
+            time--;
+            timer.text(time);
+            if(time <= 0) {
+                clearInterval(countdown);
+            }
+        }, 1000);
+
+        this._o.message.append(success);
 
     },
 
     loginError: function(message) {
 
-      let error = "<small class='error'>"+message+"</small>";
+        let error = "<small class='error'>"+message+"</small>";
 
-      this._o.message.append(error);
+        this._o.message.append(error);
 
     }
 
@@ -131,9 +147,9 @@ KEYBOARD = {
 }
 
 
-  $(document).ready(function() {
+$(document).ready(function() {
 
-  LOGIN.init();
-  KEYBOARD.init();
+    LOGIN.init();
+    KEYBOARD.init();
 
-  });
+});
