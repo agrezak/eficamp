@@ -71,7 +71,24 @@ LOGIN = {
 
         this.clearMessage();
 
-        let empty = "<small class='info'>Wpisz swój login i hasło!</small>"
+        let text = '';
+
+        let checkValue = () => {
+
+            let login = this._o.login.val().length,
+                password = this._o.password.val().length;
+
+        if( login < 1 && password < 1 ) {
+            text = 'Podaj swój login i hasło';
+        } else if( login < 1 && !password < 1 )
+            console.log(1);
+        }
+
+        checkValue();
+
+
+
+        let empty = "<small class='info'>" + text + "</small>";
 
         this._o.message.append(empty);
 
@@ -81,15 +98,15 @@ LOGIN = {
 
         this.clearMessage();
 
-        let timeLeft = "<span id='time-left'> 5 </span>";
-        let success = "<small class='success'>Za" + timeLeft + "sekund zostaniesz automatycznie przeniesiony do strony banku</small>";
+        let timeLeft = "<span id='time-left'> 5 </span>",
+        success = "<small class='success'>Za" + timeLeft + "sekund zostaniesz automatycznie przeniesiony do strony banku</small>";
 
 
         let time = 5;
         let countdown = setInterval( () => {
             let timer = $('#time-left');
             time--;
-            timer.text(time);
+            timer.text(" " + time + " ");
             if(time <= 0) {
                 clearInterval(countdown);
             }
