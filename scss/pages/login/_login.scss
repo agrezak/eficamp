@@ -4,9 +4,15 @@
 @import "../../variables/sizes.scss";
 
 body {
-  color : $white;
+  color: $white;
   background: url("../img/bg-login.jpg") no-repeat center center fixed;
   background-size: cover;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 // To replace with image - logo should be image, in most cases
@@ -15,7 +21,10 @@ body {
   top: 10%;
   border: solid 3px gray;
   border-radius: 5px;
-  font-weight: bold;
+  font-weight: 900;
+  &:hover {
+    animation: rotateIn 1s;
+  }
   a {
     color: $white;
     text-decoration: none;
@@ -56,25 +65,43 @@ body {
     border: 5px solid $white;
   }
 
-  .custom-keyboard {
-
-  }
-
   form {
     background: $loginPage;
     border: 2px solid transparent;
     border-radius: 5px;
     padding: 5%;
 
+    input {
+      margin: 0;
+    }
+
+    button {
+      width: 25%;
+      margin-top: 1.25rem;
+    }
+
   }
 }
 
 .close-keyboard {
-    border: 1px solid $black;
     width: 35px;
     height: 35px;
     border-radius: 15px;
-    background: $black;
+    background: $yellow;
+    text-align: center;
+    line-height: 2;
+    font-weight: 900;
+
+    &:hover {
+      transition: .25s ease;
+      transform: scale(1.25);
+    }
+}
+
+[id*='destroy-'] {
+  position: fixed;
+  top: 5%;
+  right: 5%;
 }
 
 .error {

@@ -16,6 +16,11 @@
 @import "layout/media/medium";
 @import "layout/media/large";
 
+// Animations
+
+@import "animations/animations";
+
 // Pages
 
 @import "pages/login/login";
+@import "pages/login/footer"

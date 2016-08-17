@@ -1,0 +1,21 @@
+// main: ../../main.scss
+
+ul {
+  margin-top: 2.5%;
+  list-style: none;
+  background: rgba(0,0,0,0.6);
+
+  li {
+    display: inline-block;
+    padding: 1% 2.5%;
+  }
+
+  a {
+    color: $white;
+    font-size: 1.15rem;
+    font-weight: 900;
+    &:hover {
+      color: $brand;
+    }
+  }
+}
