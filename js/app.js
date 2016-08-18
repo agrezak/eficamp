@@ -28,7 +28,7 @@ LOGIN = {
     let user = {
       login: this._o.login.val(),
       password: this._o.password.val()
-    }
+    };
 
     if(user.login.length < 1 || user.password.length < 1) {
       this.loginEmpty();
@@ -79,12 +79,12 @@ LOGIN = {
       password = this._o.password.val().length;
 
       if( login < 1 && password < 1 ) {
-        text = 'Podaj swój login i hasło'
+        text = 'Podaj swój login i hasło';
       } else if( login < 1 && !password < 1 ) {
-        text = 'Podaj swój login!'
+        text = 'Podaj swój login!';
       } else {
-        text = 'Podaj swoje hasło!'
-      };
+        text = 'Podaj swoje hasło!';
+      }
 
     };
 
@@ -179,7 +179,7 @@ KEYBOARD = {
 
   },
 
-}
+};
 
 
 $(document).ready(function() {

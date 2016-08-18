@@ -44,5 +44,8 @@
   "babel": {
     "presets": ["es2015"]
   },
+  "linter-jshint": {
+	   "jshintExecutablePath": ".jshintrc"
+  },
   "private": true
 }

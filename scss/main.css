@@ -119,6 +119,10 @@ body {
 		right: 5%;
 }
 
+[id*='keyboard-'] {
+		cursor: pointer;
+}
+
 .error {
 		width: 50px;
 		height: 50px;
