@@ -1,0 +1,45 @@
+// main: ../../main.scss
+
+@import "../../variables/colors.scss";
+@import "../../variables/sizes.scss";
+
+.dashboard {
+
+  div {
+    height: 100%;
+  }
+
+  background: $loginPage;
+  height: 10vh;
+
+  .header-left, .header-middle, .header-right {
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .header-middle {
+
+    .dashboard-active {
+      background: $black;
+      position: relative;
+      &:hover {
+        transition: .2s ease;
+        border: 3px solid $white;
+      }
+      &:after {
+        content: '';
+        background: $black;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        bottom: -5px;
+        border-radius: 50%;
+      }
+    }
+
+  }
+
+}

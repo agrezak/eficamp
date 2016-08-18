@@ -1,26 +1,30 @@
 // <------------------------------ Imports ------------------------------>
 
-// Variables
+//<---  Variables --->
 
 @import "variables/colors";
 @import "variables/sizes";
 
-// Layout
+// <--- Layout --->
 
 @import "layout/footer";
 @import "layout/header";
 
-// Layout - media
+// <--- Layout - media --->
 
 @import "layout/media/small";
 @import "layout/media/medium";
 @import "layout/media/large";
 
-// Animations
+// <--- Animations --->
 
 @import "animations/animations";
 
-// Pages
+// <--- Pages --->
 
+// Login
 @import "pages/login/login";
-@import "pages/login/footer"
+@import "pages/login/footer";
+
+// Dashboard
+@import "pages/dashboard/dashboard"

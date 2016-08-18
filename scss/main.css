@@ -20,7 +20,7 @@
 		animation-name: rotateIn;
 }
 
-body {
+.login {
 		color: #fff;
 		background: url("../img/bg-login.jpg") no-repeat center center fixed;
 		background-size: cover;
@@ -154,4 +154,39 @@ ul a {
 
 ul a:hover {
 		color: #15bed1;
+}
+
+.dashboard {
+		background: #45cad9;
+		height: 10vh;
+}
+
+.dashboard div {
+		height: 100%;
+}
+
+.dashboard .header-left div, .dashboard .header-middle div, .dashboard .header-right div {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+}
+
+.dashboard .header-middle .dashboard-active {
+		background: #000;
+		position: relative;
+}
+
+.dashboard .header-middle .dashboard-active:hover {
+		transition: .2s ease;
+		border: 3px solid #fff;
+}
+
+.dashboard .header-middle .dashboard-active:after {
+		content: '';
+		background: #000;
+		height: 15px;
+		width: 15px;
+		position: absolute;
+		bottom: -5px;
+		border-radius: 50%;
 }

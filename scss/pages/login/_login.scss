@@ -3,7 +3,7 @@
 @import "../../variables/colors.scss";
 @import "../../variables/sizes.scss";
 
-body {
+.login {
   color: $white;
   background: url("../img/bg-login.jpg") no-repeat center center fixed;
   background-size: cover;
