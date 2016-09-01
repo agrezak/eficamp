@@ -1,4 +1,6 @@
 
+"use strict";
+
 var LOGIN = LOGIN || {};
 
 LOGIN = {
@@ -7,13 +9,19 @@ LOGIN = {
     submit : $('#submit'),
     login : $('#login'),
     password : $('#password'),
-    message: $('.message-container')
+    message : $('.message-container'),
+    balance : $('#balance'),
+    funds : $('#funds'),
+    payments : $('#payments'),
+    baseURL : "https://efigence-camp.herokuapp.com/api/"
   },
 
+  // Init
   init: function() {
     this.bindEvents();
   },
 
+  // Bind events to desired element
   bindEvents: function() {
 
     this._o.submit.on('click touch', (event) => {
@@ -23,11 +31,19 @@ LOGIN = {
 
   },
 
+  /**
+   * [checkLogin]
+   * @ create and pass object
+   */
   checkLogin: function() {
 
     let user = {
-      login: this._o.login.val(),
-      password: this._o.password.val()
+      method : "post",
+      url : this._o.baseURL + "login",
+      login : this._o.login.val(),
+      password : this._o.password.val(),
+      error : this.postError,
+      success : this.postSuccess
     };
 
     if(user.login.length < 1 || user.password.length < 1) {
@@ -38,35 +54,38 @@ LOGIN = {
 
   },
 
-  ajaxReq: function(user) {
+  /**
+   * [postError]
+   * @param  {[json]} response [get JSON from API, parse it]
+   * invoke loginError with parsed message
+   */
+  postError: function(response) {
 
-    $.ajax({
-      type: "post",
-      data: {
-        login: user.login,
-        password: user.password
-      },
-      url: "https://efigence-camp.herokuapp.com/api/login",
+    let jsonResponse = JSON.parse(response.responseText),
+    errorMessage = jsonResponse.message;
 
-      error: (response) => {
-        let jsonResponse = JSON.parse(response.responseText),
-        errorMessage = jsonResponse.message;
-
-        this.loginError(errorMessage);
-      },
-
-      success: (response) => {
-
-        this.loginSuccess();
-
-        setTimeout( () => {
-          window.location.replace("http://google.com");
-        }, 5000);
-      }
-    });
+    LOGIN.loginError(errorMessage);
 
   },
 
+  /**
+   * [postSuccess]
+   * invoke loginSuccess and change window.location
+   */
+  postSuccess: function() {
+
+    LOGIN.loginSuccess();
+
+    setTimeout( () => {
+      window.location.replace("http://google.com");
+    }, 5000);
+  },
+
+
+  /**
+   * [loginEmpty]
+   * invoked when login inputs are empty
+   */
   loginEmpty: function() {
 
     this.clearMessage();
@@ -96,6 +115,10 @@ LOGIN = {
 
   },
 
+  /**
+   * [loginSuccess]
+   * if login === success, invoke this function [timer + message]
+   */
   loginSuccess: function() {
 
     this.clearMessage();
@@ -118,6 +141,11 @@ LOGIN = {
 
   },
 
+  /**
+   * [loginError]
+   * @param  {[string]} message
+   * Show error message
+   */
   loginError: function(message) {
 
     this.clearMessage();
@@ -128,9 +156,82 @@ LOGIN = {
 
   },
 
+  /**
+   * [clearMessage]
+   * Clear message = only one message of any type [info/error/success] can be shown
+   */
   clearMessage: function() {
 
     this._o.message.find('small').remove();
+
+  },
+
+  thousandSeperator: function(numb) {
+
+    return numb.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+
+  },
+
+  getError: function() {
+    console.log('Error, bad URL or something went wrong!');
+  },
+
+  getSuccess: (response) => {
+
+    let _ = LOGIN,
+        currency = " PLN";
+
+    let content = response.content[0],
+        balance = _.thousandSeperator(content.balance),
+        funds = _.thousandSeperator(content.funds),
+        payments = _.thousandSeperator(content.payments);
+
+    LOGIN._o.balance.text(balance + currency);
+    LOGIN._o.funds.text(funds + currency);
+    LOGIN._o.payments.text(payments + currency);
+
+
+  },
+
+  loadData: function() {
+
+    let getInfo = {
+      method : "get",
+      url : this._o.baseURL + "data/summary",
+      login : '',
+      password : '',
+      error : this.getError,
+      success : this.getSuccess
+    };
+
+    this.ajaxReq(getInfo);
+
+  },
+
+  /**
+   * [ajaxReq]
+   * @param  {[object]} obj [object that defines function behauviour]
+   * pass object data, invoke desired error/success function
+   */
+  ajaxReq: function(obj) {
+    obj = obj || {};
+    $.ajax({
+      type: obj.method,
+      data: {
+        login: obj.login,
+        password: obj.password
+      },
+      url: obj.url,
+
+      error: (response) => {
+        obj.error(response);
+      },
+
+      success: (response) => {
+        obj.success(response);
+      }
+
+    });
 
   }
 
@@ -185,6 +286,7 @@ KEYBOARD = {
 $(document).ready(function() {
 
   LOGIN.init();
+  LOGIN.loadData();
   KEYBOARD.init();
 
 });

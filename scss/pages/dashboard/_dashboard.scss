@@ -4,6 +4,15 @@
 @import "../../variables/sizes.scss";
 
 .dashboard {
+  background: $grey;
+
+  section {
+    margin: 30px 0 0 0;
+  }
+  
+}
+
+.dashboard header {
 
   div {
     height: 100%;
@@ -39,7 +48,23 @@
         border-radius: 50%;
       }
     }
-
   }
+}
+
+.dashboard main {
+
+  span {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 900;
+  }
+
+}
+
+.dashboard .diagram {
+
+  width: 500px;
+  height: 500px;
+  background: black;
 
 }

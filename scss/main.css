@@ -157,31 +157,39 @@ ul a:hover {
 }
 
 .dashboard {
+		background: #D3D3D3;
+}
+
+.dashboard section {
+		margin: 30px 0 0 0;
+}
+
+.dashboard header {
 		background: #45cad9;
 		height: 10vh;
 }
 
-.dashboard div {
+.dashboard header div {
 		height: 100%;
 }
 
-.dashboard .header-left div, .dashboard .header-middle div, .dashboard .header-right div {
+.dashboard header .header-left div, .dashboard header .header-middle div, .dashboard header .header-right div {
 		display: flex;
 		align-items: center;
 		justify-content: center;
 }
 
-.dashboard .header-middle .dashboard-active {
+.dashboard header .header-middle .dashboard-active {
 		background: #000;
 		position: relative;
 }
 
-.dashboard .header-middle .dashboard-active:hover {
+.dashboard header .header-middle .dashboard-active:hover {
 		transition: .2s ease;
 		border: 3px solid #fff;
 }
 
-.dashboard .header-middle .dashboard-active:after {
+.dashboard header .header-middle .dashboard-active:after {
 		content: '';
 		background: #000;
 		height: 15px;
@@ -189,4 +197,16 @@ ul a:hover {
 		position: absolute;
 		bottom: -5px;
 		border-radius: 50%;
+}
+
+.dashboard main span {
+		display: block;
+		font-size: 1.5rem;
+		font-weight: 900;
+}
+
+.dashboard .diagram {
+		width: 500px;
+		height: 500px;
+		background: black;
 }
